@@ -1,0 +1,25 @@
+language: rust
+rust:
+  - nightly
+env:
+  global:
+  - RUST_TEST_THREADS=1
+  - RUST_BACKTRACE=full
+  - secure: wJDLNpHdwyd1ui2xINTztHchgO6FZbfszhS9pgNIQnfLU18o1JsMn5k+dqP+2mU3s7iRCqJdHP+GhIDGb30cDnyS0SudRG88WY4Y1mUFxVg5EtfmdNo7zLFSWZyyuoXiJySDSlSJaW47Jkx6s62Kf02inSOY+IB6k1QDoLXpdotx/REB7PTM4A2l8M/T9sD3/a1KZERnCRoUqld6D2nBNrD9Zho6D4TdxxgjI3zuWL/gD8dJfv1xhnFdDP2iHVvRSO2tIBbkMbR7ICcmkdqi8Lo+7Y7GN2LDcMhc0+ZK2GMWK09v2aBQmHkK/1N7Jm4d7EeqBmnYPWOtowaJGv0DfSplteE+XxNATnjp63PyL6t2vqO/2WgcOkM23FSEGFqHRoc63KCaQZregbDZUtdu5JjBArINXyjCsO6Awd0MA5eb7mlCPlv1aSUo5L0gPdZ6e9fN8w4srTCmYW4ejY3Yk//lrmI6Bmv9+0FY4A7EXXyU0Kx1WDcCGl2XeXlhDNg4g/mqxP8CFIeU9FWd2CYdCOpjsvVAUTw8iFmZBFxiBMylE5UL5/mP/gJc+9Cvy5izcFC20KTKIxR7WoGUMnb3zr27do+GJVzXalvFPxaPqYt4Ly1piMt2IDD1aw9xaQWOHz0jgrtl245mzr26WxAbKxXqT3LERWMQFu1i17WhShM=
+  - secure: QxLX5L8It1Pl+0uhWaMPwfWyQiTRfMVrr7Z7X/ARA1veJsYngJR+WoCzoM/cshxHntMzPywSeiV45vR5WFT5pKQ5YU8iKCg4fhMDVi3IGFHUmK2vPkuFfSuJxndiTD3tVbEaqTakLAUOreRVHqTIx41QP3k29ntHM/fqg0gl/OKIh6gFs62cNkVz/nSkEnpZWP0tHHkEAn4Ebh3iKEbZSdiAwvYZqOQgpId5CbRDVPiJ9XNrFq7fgJpIZoPolwa5YF/2gN6EwNP3eZDbBxo8+JgUtQRRxYji50GY4944ZG0vKghEv17Rx2wwT3I3Wuk++7H2GrI4NuLwwQ2AvVPWGs6l/lDmZw7GizPkxZcs9ZMFJ9rkiksNATOOjSMWS2Q7l7EJo4qIwRbGx2pWhecjcdwb2hraQFsvcD07659jmkvSFxn89wzRsbPfrsRdVxNCB5aaQyJU5phh7oddOdSuD1w/E2eiMkCWJT18SPyS52+mhZuvc0F9UqxbaNFZYKL+g/CKPGiIaER8L0kdCVuGrUBTvijzyvddeMEdYZeN5ZidbELBPAfID4U+4/soBZwO2UpmvENcel32coJX+m2+4bEhKoCW7CDZxbWjld5RfjxLUu2acK1xt+j6eZS/IedgoI9Gr+oAMCKDSQu7tc1cVr+SrvCOWub3LDmIBlgq4jQ=
+  - secure: WgWi/UpZjMSdn1Xo1HMXVllamYXZ/B5GKdpLxYSKOm8uqzNj+gq1ZTTgq8rGnQeDMN9MBjvduCPi8g1d+Qpvs3L6DaCZ5Gxc6PLcqOAOxpkx4VBsYtCB4QkeA27MP6WDVmJk3dZOg1prIXUcsDu1k49Wt1DdXPjzQSdhm78hLxV6ZC1uLST5b8KFZyl+iDbKFcKCBnxAn9TjtJW5WZJ/IMWn/egoz1iMvkOsnin4vQD97pNgX46TEbLMSE4D9XRY1OhlnWGqAKdvMzANG38mgmPUVkbqgZzLS+8uiEgdvIhR1p+kppyR+HmICyqGvE85sRfoYmdYoj/gV7Yj3Z12H+GGVFvfrYqNWkggCk2bQvwada6B4cu3C5Af4zQnf91cB4hxYBQax3hLnGiMRNLH90lxhT/I2IUxsvaT+s1I6lxkqp2YymdvBCUDYHywfbC8ZSqgS4cStcne+JkfrFH9UnNydq7ifhi+OhYtdPdI8ymehcF7c8j6qN0P/7Bqgh75hqifuZovwryOCtIX7QXlCozX7gacyjwQ22RzT/ctWwRlg5Co39L/M14mUxljvS50LkPPa9jISEE+SX0Yvqy1f33C87edCIn+6hlK1G/g06bzn/T+AqwU/Y7MKJ5PgZ6gJc1AoP8MjrzNCbFpKUy6U6Izq8aNc47g3Zz08UuiSqo=
+  - secure: vMaLm8ukcUBeRwAlGnausVA3cF3nGiwQY7IHB4Z9MDpRKA5sIt5zhLUw3urDHpSfjHDdWw5ee57PF935FfpNGK3rcl53m4Jxhenl5EDI7/FfQZwrNyBcQLIn6p3akmnzJXngR90cLqz3lxVV9txboUIT4+UaC3TPH1yszeV5EzqxMyNnVSedhn3Nme2Q0HCb+smxyBkJNbVXkkeGP78pZceHycAjwF4TSG0j2wxa8SZIwhdvVQBSUm3FkXUYkE/+56xQdCEAakHU5roH3ZrFG/mz34bfBQOT3mCGRCdeoevUVETUXSeQ6mWHAbgpBVKPWy1C+HHzZBoekDC2JIGwiNWWXFc9DKJlnD0OUftoVIiNLU9Fs3jPyDmpvkkT4YcPD8opeh/PUCvZai8jzz1ooJd5FbBE+nvD0QiUf1K7rmujZ2DTQeAAslwoanJxEsku5htL6Jz5EIei1Ifh7NTarJfo+edyeF2QSbfWdlKeoDkG9uPT14nyvxy19Tw3pzoGDMHT/KP+8mx5BAFDEBskM+ioD8JecctMlf/sIsHWbfm4mc2LA5h40+q53BT4LxIZ9K41MeyaQIQtPm1tRzzPr5qc50cvC5Ud4AvBkpc88Sdwkaefd5zl/nUeEia2n3LCoHBfu1dSJANgHzCXqWh1soT+tzNYlrGXW+9UYSIPRF0=
+
+before_script:
+  - wget https://s3.us-east-2.amazonaws.com/mimir-instantclient/instantclient-basic-linux.x64-12.2.0.1.0.zip
+    -O /tmp/instantclient-basic-linux.x64-12.2.0.1.0.zip
+  - wget https://s3.us-east-2.amazonaws.com/mimir-instantclient/instantclient-sdk-linux.x64-12.2.0.1.0.zip
+    -O /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip
+  - mkdir -p /opt/oracle
+  - unzip -uo /tmp/instantclient-basic-linux.x64-12.2.0.1.0.zip -d /opt/oracle
+  - unzip -uo /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /opt/oracle
+  - export LD_LIBRARY_PATH=/opt/oracle/instantclient_12_2:$LD_LIBRARY_PATH
+
+script:
+  - cargo build --verbose --all
+  - cargo test --verbose --all

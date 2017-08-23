@@ -15,6 +15,7 @@ mod dam;
 mod error;
 mod util;
 
-pub use dam::{fetch, ColumnMetadata, ContextBuilder, RowMetadata, RowsMetadata, TablesMetadata};
+pub use dam::{fetch, ColumnMetadata, Context, ContextBuilder, RowMetadata, RowsMetadata,
+              TablesMetadata};
 pub use error::{Error, ErrorKind};
 pub use util::pretty_print;
