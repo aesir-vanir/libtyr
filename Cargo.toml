@@ -1,0 +1,16 @@
+[package]
+authors = ["Jason Ozias <jason.g.ozias@gmail.com>"]
+name = "libtyr"
+version = "0.1.0"
+
+[dependencies]
+derive_builder = "0.5.0"
+error-chain = "0.11.0-rc.2"
+getset = "0.0.5"
+mimir = "0.2.0"
+
+[replace."derive_builder:0.5.0"]
+path = "../rust-derive-builder/derive_builder"
+
+[replace."mimir:0.2.0"]
+path = "../mimir"
