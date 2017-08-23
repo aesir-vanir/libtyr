@@ -36,6 +36,7 @@ impl ContextBuilder {
 
 /// User space table names query.
 const TABLE_NAMES: &'static str = r"select table_name from user_tables";
+
 /// Describe user space tables Oracle SQL.
 const DESC: &'static str = r"SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, DATA_TYPE_MOD,
 DATA_TYPE_OWNER, DATA_LENGTH, DATA_PRECISION, DATA_SCALE, NULLABLE, COLUMN_ID, DEFAULT_LENGTH,
