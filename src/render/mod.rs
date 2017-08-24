@@ -52,7 +52,7 @@ impl Render {
                 fields.push(field);
             }
             let mut derives = Vec::new();
-            let derive_names = vec!["Clone", "Default", "Debug", "Eq", "Hash", "PartialEq"];
+            let derive_names = vec!["Clone", "Default", "Debug", "PartialEq"];
             for (idx, derive) in derive_names.iter().enumerate() {
                 let derive: Derive = DeriveBuilder::default()
                     .name(derive.to_string())
