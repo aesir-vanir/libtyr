@@ -6,8 +6,14 @@ extern crate derive_builder;
 extern crate error_chain;
 #[macro_use]
 extern crate getset;
+#[macro_use]
+extern crate serde_derive;
 
+extern crate inflector;
 extern crate mimir;
+extern crate mustache;
+extern crate rustc_serialize;
+extern crate serde;
 extern crate term;
 
 mod dam;

@@ -4,9 +4,18 @@ name = "libtyr"
 version = "0.1.0"
 
 [dependencies]
-derive_builder = { git = "https://github.com/colin-kiegel/rust-derive-builder" }
+Inflector = "0.10.1"
 error-chain = "0.11.0-rc.2"
 getset = "0.0.5"
 lazy_static = "0.2.8"
-mimir = { git = "https://github.com/aesir-vanir/mimir" }
+mustache = "0.8.1"
+rustc-serialize = "0.3.24"
+serde = "1.0.11"
+serde_derive = "1.0.11"
 term = "0.4.6"
+
+[dependencies.derive_builder]
+git = "https://github.com/colin-kiegel/rust-derive-builder"
+
+[dependencies.mimir]
+git = "https://github.com/aesir-vanir/mimir"
