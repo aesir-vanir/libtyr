@@ -1,6 +1,12 @@
 [package]
 authors = ["Jason Ozias <jason.g.ozias@gmail.com>"]
+description = "Code generation for Oracle ORM and query builder code in Rust"
+documentation = "https://docs.rs/libtyr"
+keywords = ["orm", "oracle", "query"]
+license = "MIT/Apache-2.0"
 name = "libtyr"
+readme = "README.md"
+repository = "https://github.com/aesir-vanir/libtyr"
 version = "0.1.0"
 
 [dependencies]
