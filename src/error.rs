@@ -13,6 +13,10 @@ error_chain! {
             description("")
             display("")
         }
+        Nullable {
+            description("")
+            display("")
+        }
         Stdout {
             description("")
             display("")

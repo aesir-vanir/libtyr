@@ -1,6 +1,6 @@
 //! Render tables metadata as Rust ORM code via mustache.
-use dam::TablesMetadata;
-use error::Result;
+use dam::{ColumnMetadata, TablesMetadata};
+use error::{ErrorKind, Result};
 use inflector::cases::snakecase::to_snake_case;
 use inflector::cases::pascalcase::to_pascal_case;
 use mustache;
@@ -35,48 +35,9 @@ impl Render {
 
                 for col in col_info {
                     match &(*col.column_name())[..] {
-                        "COLUMN_NAME" => {
-                            let type_info = col.type_info();
-                            let data = if let Some(ref data) = *col.data() {
-                                data.to_string(type_info)?
-                            } else {
-                                "(null)".to_string()
-                            };
-                            field.set_field_name(to_snake_case(&data));
-                        }
-                        "DATA_TYPE" => {
-                            let type_info = col.type_info();
-                            let data = if let Some(ref data) = *col.data() {
-                                data.to_string(type_info)?
-                            } else {
-                                "(null)".to_string()
-                            };
-                            let mapped = match &data[..] {
-                                "NUMBER" => "f64",
-                                "VARCHAR2" => "String",
-                                _ => "",
-                            };
-                            field.set_field_type(mapped.to_string());
-                        }
-                        "NULLABLE" => {
-                            let type_info = col.type_info();
-                            let data = if let Some(ref data) = *col.data() {
-                                data.to_string(type_info)?
-                            } else {
-                                "(null)".to_string()
-                            };
-                            match &data[..] {
-                                "Y" => {
-                                    let mut optional = String::from("Option<");
-                                    optional.push_str(field.field_type());
-                                    optional.push_str(">");
-                                    field.set_field_type(optional);
-                                    field.set_nullable(true)
-                                }
-                                "N" => field.set_nullable(false),
-                                _ => {}
-                            }
-                        }
+                        "COLUMN_NAME" => field.set_field_name(to_snake_case(&data_as_str(col)?)),
+                        "DATA_TYPE" => field.set_field_type(map_data_type(&data_as_str(col)?)?),
+                        "NULLABLE" => map_nullable(&data_as_str(col)?, &mut field)?,
                         _ => {}
                     }
                 }
@@ -104,4 +65,42 @@ impl Render {
         template.render(writer, &file)?;
         Ok(())
     }
+}
+
+/// Get the data from `ColumnMetadata` as a `String`.
+fn data_as_str(col: &ColumnMetadata) -> Result<String> {
+    let type_info = col.type_info();
+    let data = if let Some(ref data) = *col.data() {
+        data.to_string(type_info)?
+    } else {
+        "(null)".to_string()
+    };
+    Ok(data)
+}
+
+/// Map the Oracle data type to a Rust data type.
+fn map_data_type(data_type: &str) -> Result<String> {
+    let mapped = match data_type {
+        "NUMBER" => "f64",
+        "VARCHAR2" => "String",
+        _ => "",
+    };
+    Ok(mapped.to_string())
+}
+
+/// Map a nullable column to an `Option` field.
+fn map_nullable(data_str: &str, field: &mut Field) -> Result<()> {
+    match data_str {
+        "Y" => {
+            let mut optional = String::from("Option<");
+            optional.push_str(field.field_type());
+            optional.push_str(">");
+            field.set_field_type(optional);
+            field.set_nullable(true);
+        }
+        "N" => field.set_nullable(false),
+        _ => return Err(ErrorKind::Nullable.into()),
+    }
+
+    Ok(())
 }
