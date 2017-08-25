@@ -30,8 +30,7 @@ mod error;
 mod render;
 mod util;
 
-pub use dam::{fetch, ColumnMetadata, Context, ContextBuilder, RowMetadata, RowsMetadata,
-              TablesMetadata};
+pub use dam::{fetch, ColumnMetadata, Context, ContextBuilder, RowMetadata, RowsMetadata, TablesMetadata};
 pub use error::{Error, ErrorKind};
 pub use render::{Render, RenderBuilder};
 pub use util::pretty_print;
