@@ -24,13 +24,13 @@ extern crate rustc_serialize;
 extern crate serde;
 extern crate term;
 
+mod code;
 mod dam;
 #[allow(missing_docs)]
 mod error;
-mod render;
 mod util;
 
 pub use dam::{fetch, ColumnMetadata, Context, ContextBuilder, RowMetadata, RowsMetadata, TablesMetadata};
 pub use error::{Error, ErrorKind};
-pub use render::{Render, RenderBuilder};
+pub use code::{Gen, GenBuilder};
 pub use util::pretty_print;

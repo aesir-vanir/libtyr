@@ -13,9 +13,9 @@ extern crate lazy_static;
 
 extern crate libtyr;
 
+mod code;
 mod dam;
 mod error;
-mod render;
 
 use error::Result;
 use libtyr::{Context, ContextBuilder};
