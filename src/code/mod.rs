@@ -32,6 +32,7 @@ pub struct Gen {
 impl Gen {
     /// Generate the module code for the given `TablesMetadata`.
     pub fn gen(&self, tables_metadata: &TablesMetadata) -> Result<()> {
+        fs::create_dir_all(&self.module_path)?;
         mod_gen(&self.module_path, tables_metadata)?;
 
         for (table_name, rows) in tables_metadata {
@@ -59,7 +60,6 @@ pub fn mod_gen(path: &PathBuf, tables_metadata: &TablesMetadata) -> Result<()> {
         .tables(table_mods)
         .build()?;
     let mut module_path = PathBuf::from(path);
-    fs::create_dir_all(&module_path)?;
     module_path.push("mod.rs");
 
     let mod_file = File::create(module_path)?;
@@ -108,7 +108,6 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
         .map(|c| c.to_lowercase().to_string())
         .collect();
     let mut module_path = PathBuf::from(path);
-    fs::create_dir_all(&module_path)?;
     module_path.push(lc_table_name);
     module_path.set_extension("rs");
 
