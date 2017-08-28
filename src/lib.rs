@@ -21,7 +21,6 @@ extern crate inflector;
 extern crate mimir;
 extern crate mustache;
 extern crate rustc_serialize;
-extern crate serde;
 extern crate term;
 
 mod code;
