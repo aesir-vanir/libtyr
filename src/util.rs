@@ -61,9 +61,8 @@ pub fn pretty_print(tables: &TablesMetadata) -> Result<()> {
                 t.reset()?;
                 t.flush()?;
                 t.fg(term::color::GREEN)?;
-                let type_info = col.type_info();
                 let data = if let Some(ref data) = *col.data() {
-                    data.to_string(type_info)?
+                    data.get_string()
                 } else {
                     "(null)".to_string()
                 };

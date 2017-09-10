@@ -119,9 +119,8 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
 
 /// Get the data from `ColumnMetadata` as a `String`.
 fn data_as_str(col: &ColumnMetadata) -> Result<String> {
-    let type_info = col.type_info();
     let data = if let Some(ref data) = *col.data() {
-        data.to_string(type_info)?
+        data.get_string()
     } else {
         "(null)".to_string()
     };

@@ -35,10 +35,7 @@ pub struct Context {
 impl ContextBuilder {
     /// Generate the default db context.
     fn default_db_context(&self) -> ::std::result::Result<mimir::Context, String> {
-        match mimir::Context::create() {
-            Ok(ctxt) => Ok(ctxt),
-            Err(e) => Err(e.description().to_string()),
-        }
+        Ok(mimir::ContextBuilder::default().build()?)
     }
 }
 
