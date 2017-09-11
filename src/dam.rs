@@ -12,7 +12,6 @@ use mimir::enums::ODPINativeTypeNum::Bytes;
 use mimir::enums::ODPIOracleTypeNum::Varchar;
 use mimir::{self, flags, Connection, Data, TypeInfo};
 use std::collections::BTreeMap;
-use std::ffi::CString;
 
 /// `tyr` Oracle database context
 #[derive(Builder, Debug, Getters)]
@@ -83,9 +82,8 @@ pub fn fetch(ctxt: &Context) -> Result<TablesMetadata> {
     let mut table_map: TablesMetadata = BTreeMap::new();
     let db_ctxt = ctxt.db_context();
     let mut common_create_params = db_ctxt.init_common_create_params()?;
-    let enc_cstr = CString::new("UTF-8").expect("badness");
-    common_create_params.set_encoding(enc_cstr.as_ptr());
-    common_create_params.set_nchar_encoding(enc_cstr.as_ptr());
+    common_create_params.set_encoding("UTF-8")?;
+    common_create_params.set_nchar_encoding("UTF-8")?;
     common_create_params.set_create_mode(flags::DPI_MODE_CREATE_EVENTS);
     let conn = Connection::create(
         db_ctxt,
