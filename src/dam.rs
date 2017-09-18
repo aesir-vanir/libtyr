@@ -14,7 +14,7 @@ use mimir::{self, flags, Connection, Data, TypeInfo};
 use std::collections::BTreeMap;
 
 /// `tyr` Oracle database context
-#[derive(Builder, Debug, Getters)]
+#[derive(Builder, Getters)]
 pub struct Context {
     /// `mimir` context
     #[get]
@@ -34,7 +34,10 @@ pub struct Context {
 impl ContextBuilder {
     /// Generate the default db context.
     fn default_db_context(&self) -> ::std::result::Result<mimir::Context, String> {
-        Ok(mimir::ContextBuilder::default().build()?)
+        match mimir::Context::create() {
+            Ok(ctxt) => Ok(ctxt),
+            Err(e) => Err(e.description().to_string()),
+        }
     }
 }
 
