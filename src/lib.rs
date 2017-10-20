@@ -8,6 +8,7 @@
 
 //! `libtyr` ORM and Query Builder generation.
 #![deny(missing_docs)]
+#![feature(inclusive_range_syntax)]
 #[macro_use]
 extern crate derive_builder;
 #[macro_use]

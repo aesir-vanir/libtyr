@@ -119,7 +119,7 @@ pub fn fetch(ctxt: &Context) -> Result<TablesMetadata> {
 
         while found {
             let mut row_data = Vec::new();
-            for i in 1..(cols + 1) {
+            for i in 1..=cols {
                 let mut query_data_by_col: ColumnMetadata = Default::default();
                 let query_info = table_desc.get_query_info(i)?;
                 let (_, data) = table_desc.get_query_value(i)?;
