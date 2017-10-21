@@ -23,7 +23,7 @@ use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-const CONN_STRING: &'static str = "//oic.cbsnae86d3iv.us-east-2.rds.amazonaws.com/ORCL";
+const CONN_STRING: &str = "//oic.cbsnae86d3iv.us-east-2.rds.amazonaws.com/ORCL";
 
 #[cfg(test)]
 lazy_static! {
