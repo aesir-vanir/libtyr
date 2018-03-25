@@ -35,9 +35,7 @@ lazy_static! {
             #[cfg_attr(feature = "cargo-clippy", allow(used_underscore_binding))]
             for line_res in buf_reader.lines() {
                 if let Ok(line) = line_res {
-                    let parts = line.split(':').map(|x| {
-                        x.trim_right().to_string()
-                    }).collect::<Vec<String>>();
+                    let parts = line.split(':').map(|x| x.trim_right().to_string()).collect::<Vec<String>>();
                     creds.extend(parts);
                 }
             }

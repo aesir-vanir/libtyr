@@ -7,8 +7,8 @@
 // modified, or distributed except according to those terms.
 
 //! `libtyr` utilities
-use error::{ErrorKind, Result};
 use dam::TablesMetadata;
+use error::{ErrorKind, Result};
 use term;
 
 /// Pad a string to the given length.
@@ -47,11 +47,7 @@ pub fn pretty_print(tables: &TablesMetadata) -> Result<()> {
             t.reset()?;
             t.flush()?;
 
-            let max_col_length = col_data
-                .iter()
-                .map(|col| col.column_name().len())
-                .max()
-                .ok_or_else(|| ErrorKind::Max)?;
+            let max_col_length = col_data.iter().map(|col| col.column_name().len()).max().ok_or_else(|| ErrorKind::Max)?;
 
             for col in col_data {
                 t.fg(term::color::GREEN)?;

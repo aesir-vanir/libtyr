@@ -9,8 +9,8 @@
 //! Render tables metadata as Rust ORM code via mustache.
 use dam::{ColumnMetadata, RowsMetadata, TablesMetadata};
 use error::{ErrorKind, Result};
-use inflector::cases::snakecase::to_snake_case;
 use inflector::cases::pascalcase::to_pascal_case;
+use inflector::cases::snakecase::to_snake_case;
 use mustache;
 use std::fs::{self, File};
 use std::io::BufWriter;
@@ -48,17 +48,11 @@ pub fn mod_gen(path: &PathBuf, tables_metadata: &TablesMetadata) -> Result<()> {
     let mut table_mods = Vec::new();
 
     for table_name in tables_metadata.keys() {
-        let lc_table_name: String = table_name
-            .chars()
-            .map(|c| c.to_lowercase().to_string())
-            .collect();
+        let lc_table_name: String = table_name.chars().map(|c| c.to_lowercase().to_string()).collect();
         table_mods.push(TableModBuilder::default().name(lc_table_name).build()?);
     }
 
-    let dam_mod = ModBuilder::default()
-        .name("dam".to_string())
-        .tables(table_mods)
-        .build()?;
+    let dam_mod = ModBuilder::default().name("dam".to_string()).tables(table_mods).build()?;
     let mut module_path = PathBuf::from(path);
     module_path.push("mod.rs");
 
@@ -90,10 +84,7 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
     let mut derives = Vec::new();
     let derive_names = vec!["Clone", "Default", "Debug", "PartialEq"];
     for (idx, derive) in derive_names.iter().enumerate() {
-        let derive: Derive = DeriveBuilder::default()
-            .name(derive.to_string())
-            .comma(idx < (derive_names.len() - 1))
-            .build()?;
+        let derive: Derive = DeriveBuilder::default().name(derive.to_string()).comma(idx < (derive_names.len() - 1)).build()?;
         derives.push(derive);
     }
 
@@ -103,10 +94,7 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
         .field(fields)
         .build()?;
 
-    let lc_table_name: String = table_name
-        .chars()
-        .map(|c| c.to_lowercase().to_string())
-        .collect();
+    let lc_table_name: String = table_name.chars().map(|c| c.to_lowercase().to_string()).collect();
     let mut module_path = PathBuf::from(path);
     module_path.push(lc_table_name);
     module_path.set_extension("rs");

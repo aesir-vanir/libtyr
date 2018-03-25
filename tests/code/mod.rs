@@ -15,26 +15,16 @@ fn render() {
     let tables_metadata = libtyr::fetch(&context).expect("Unable to fetch metadata!");
     let mut tmpdir = env::temp_dir();
     tmpdir.push("dam");
-    if let Ok(codegen) = GenBuilder::default()
-        .module_path(tmpdir)
-        .query_builder(false)
-        .build()
-    {
+    if let Ok(codegen) = GenBuilder::default().module_path(tmpdir).query_builder(false).build() {
         assert!(codegen.gen(&tables_metadata).is_ok());
 
         for table_name in tables_metadata.keys() {
-            let lc_table_name: String = table_name
-                .chars()
-                .map(|c| c.to_lowercase().to_string())
-                .collect();
+            let lc_table_name: String = table_name.chars().map(|c| c.to_lowercase().to_string()).collect();
             let mut table_code = env::temp_dir();
             table_code.push("dam");
             table_code.push(lc_table_name);
             table_code.set_extension("rs");
-            assert!(
-                fs::metadata(table_code).is_ok(),
-                "Error generating table code"
-            );
+            assert!(fs::metadata(table_code).is_ok(), "Error generating table code");
         }
     } else {
         assert!(false, "RenderBuilder build failed!");
