@@ -84,7 +84,10 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
     let mut derives = Vec::new();
     let derive_names = vec!["Clone", "Default", "Debug", "PartialEq"];
     for (idx, derive) in derive_names.iter().enumerate() {
-        let derive: Derive = DeriveBuilder::default().name(derive.to_string()).comma(idx < (derive_names.len() - 1)).build()?;
+        let derive: Derive = DeriveBuilder::default()
+            .name(derive.to_string())
+            .comma(idx < (derive_names.len() - 1))
+            .build()?;
         derives.push(derive);
     }
 
