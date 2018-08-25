@@ -138,7 +138,9 @@ fn map_nullable(data_str: &str, field: &mut Field) -> Result<()> {
             field.set_field_type(optional);
             field.set_nullable(true);
         }
-        "N" => field.set_nullable(false),
+        "N" => {
+            field.set_nullable(false);
+        }
         _ => return Err(ErrorKind::Nullable.into()),
     }
 
