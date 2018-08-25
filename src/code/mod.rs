@@ -73,8 +73,12 @@ pub fn table_gen(path: &PathBuf, table_name: &str, rows: &RowsMetadata) -> Resul
 
         for col in col_info {
             match &(*col.column_name())[..] {
-                "COLUMN_NAME" => field.set_field_name(to_snake_case(&data_as_str(col)?)),
-                "DATA_TYPE" => field.set_field_type(map_data_type(&data_as_str(col)?)?),
+                "COLUMN_NAME" => {
+                    field.set_field_name(to_snake_case(&data_as_str(col)?));
+                }
+                "DATA_TYPE" => {
+                    field.set_field_type(map_data_type(&data_as_str(col)?)?);
+                }
                 "NULLABLE" => map_nullable(&data_as_str(col)?, &mut field)?,
                 _ => {}
             }

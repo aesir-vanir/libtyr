@@ -11,7 +11,7 @@
 error_chain! {
     foreign_links {
         Io(::std::io::Error);
-        Mimir(::mimir::error::Error);
+        Mimir(::mimir::Error);
         Mustache(::mustache::Error);
         Term(::term::Error);
     }
